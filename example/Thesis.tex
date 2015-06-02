@@ -1,0 +1,214 @@
+%%%%% FORMAT THE PAPER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\documentclass[final, 12pt]{thesis}  % this looks okay. (AAK, 8/2/08)
+%\documentclass[final,10pt,oneside]{thesis}
+%\documentclass[compact,10pt]{thesis}  % this looks like shit. (AAK, 8/2/08)
+%\documentclass[compact,12pt,twoside]{thesis}  % this looks like shit. (AAK, 8/2/08)
+\documentclass[final,12pt,oneside]{thesis}
+%\documentclass[final,12pt,twoside]{thesis}
+%\documentclass[draft,12pt]{thesis}
+        % Curly brackets: Specify the "thesis" class file (thesis.cls).
+        %   It assumes the existence of a few other style (*.sty) files.
+        %   See the thesis.cls file for details.
+        % Square brackets, specify the options you want to use.
+        %   Allowed options are 10pt, 11pt, 12pt,
+        %   oneside, twoside, draft, compact, and final.
+        %   See the "thesis.cls" file for descriptions.
+
+%%%%% INCLUDE PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% NOTE: If you want your figure captions, table captions, and bibliography
+% items single-spaced (this is permissible for UW theses!), you can use
+% the "\fixspacing" command in each of these environments.  This command
+% will choose the appropriate spacing, whether you use the "final" or
+% "draft" modes.  See the "thesis.cls" class file for details.
+% CLARIFICATION: The \fixspacing command has to go inside EACH of your
+%     \tablenotetext blocks to be effective
+
+%\usepackage[showframe,pass]{geometry} % Shows borders on the page.
+\usepackage{graphicx}
+\usepackage{amssymb}		% AMS symbols
+%\usepackage{threeparttable}
+\usepackage{latexsym}
+\usepackage{natbib}
+\usepackage{chapterbib}
+\usepackage{amsmath,amssymb}		% package to get fancy math stuff
+\usepackage[usenames,dvipsnames]{color}
+%\usepackage[draft]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+    pdftex,
+    pdftitle={Your title},
+    pdfauthor={Your Name}
+}
+%\usepackage{tabularx}
+%\usepackage{subfig}
+%\usepackage[FIGTOPCAP]{subfigure}
+%\usepackage{upgreek}
+%\usepackage{multirow}
+%\usepackage{longtable}
+%\usepackage{tabularx}
+%\usepackage{siunitx}
+
+%\usepackage{etoolbox}
+%\appto\TPTnoteSettings{\footnotesize}
+%\usepackage{lscape}		% package for landscape-style pages
+% You can use this to create a landscape table in a \begin{landscape}--
+% \end{landscape} environment.  Note that the rotated table will probably *not*
+% show up in Xdvi, but *will* show up in the PostScript version (e.g., can be
+% seen with gv).
+
+%\usepackage{nomencl}	% For creating lists of abbreviations and symbols
+
+%\makenomenclature
+%\makeindex
+
+%\makeatletter
+%\g@addto@macro\TPT@defaults{\footnotesize}
+%\makeatother
+
+\citestyle{aa}
+
+\input{define.tex}	% Read in list of user-defined LaTeX commands
+
+%%%%% SELECTIVE COMPILATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Uncomment to prevent the creation of new *.toc *.lot, and *.lof
+%   files.  Do this if you need to edit these files for the final
+%   version of the paper.  For example, if you have multi-page
+%   figures or tables but you want the lists of figures & tables
+%   to have only one line for these, you will need to delete the
+%   extra lines in the *.lof and *.lot files and re-run LaTeX.
+%\nofiles
+
+% Use \includeonly{} if you are just working on one \include{}'d
+% section.  This prevents LaTeX from re-processing the unneeded
+% chapters, but preserves references and page/fig/table numbers.
+% Try it.  You'll like it.
+%\includeonly{Abstract}
+%\includeonly{Introduction/Introduction}
+%\includeonly{Chap2/chap2}
+%\includeonly{Conclusion/Conclusion}
+
+%%%%% BEGIN THE DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}        % BEGIN THE DOCUMENT TEXT
+
+% Force some caption formatting
+%\captionsetup[table]{justification=centering,font=rm,labelsep=none}
+%\captionsetup[figure]{font=rm,labelsep=none}
+
+%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{My Thesis}
+
+\author{Your Name}
+\year{1955}
+
+% These two aren't really needed except for the UMI abstract
+\adviser{Dr.\ Awesome Advisor}
+\adviserrank{Associate Professor}
+
+\oralexamdate{5 November 1955}
+\committeeone{Member One, Associate Professor, Astronomy}
+\committeetwo{Member Two, Professor, Astronomy}
+\committeethree{Member Three, Assistant Professor, Astronomy}
+\committeefour{Member Four, Professor, Astronomy}
+\committeefive{Member Five, Professor, Physics}
+
+\ttlpage                % This command produces the title page.  Nifty!
+%\cpypage                % This produces the copyright page.  Also nifty!
+                        % Reminder: it costs money to register copyright
+                        % (but you *have it* without doing anything!)
+
+\cleardoublepage
+
+%%%%% FRONT MATTER: ABSTRACT, DEDICATION, ACKNOWLEDGMENTS, CONTENTS %%%%%%%%%%%%
+
+\frontmatter            % Choose roman-type numbers; reset page numbers to 1.
+
+\pagestyle{thesis}      % Set the page style to "thesis"
+                        %   (page numbers at the top right)
+
+\include{Abstract}      % *.tex file for abstract
+\cleardoublepage
+
+%\include{sponsor}       % *.tex file for "sponsorship" page
+
+%\include{Dedication}      % *.tex file for dedication
+%\cleardoublepage
+
+\include{Acknowledgments}        % *.tex file for acknowledgements
+\cleardoublepage
+
+%\include{quotes}        % *.tex file for quotations
+%\clearpage
+
+\setcounter{tocdepth}{3}
+\tableofcontents        % *.toc file with table of contents
+\cleardoublepage
+
+\listoftables           % *.lot file with list of tables
+\clearpage
+
+\listoffigures          % *.lof file with list of figures
+\cleardoublepage
+
+     % Note that the \listoftables does not play well with the
+     % deluxetable environment.  You will probably have to do some
+     % hand-tweaking of the master.lot file if you have multi-page
+     % tables.
+
+%\renewcommand{\nomlabel}[1]{\hfil #1\hfil}	% Center symbols in list
+%\renewcommand{\nomname}{List of Abbreviations and Symbols}
+
+%\clearpage
+%\addcontentsline{toc}{section}{List of Abbreviations and Symbols} % add contents line; does not use default given by nomencl package also usually puts in the wrong page number, change it in master.toc
+
+%{\fixspacing \small
+%\printnomenclature[1in]	% *.nls file with list of symbols
+%}
+
+\cleardoublepage
+
+
+%%%%% MAIN TEXT OF THE THESIS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%manually widening the vertical spacing between text
+%\renewcommand{\baselinestretch}{1.4}
+
+\mainmatter
+
+% I don't have any tables, so table column separation is not of concern.
+%\setlength{\tabcolsep}{0.035in}
+
+\include{Introduction/Introduction}
+\include{Chap2/chap2}
+\include{Conclusion/Conclusion}
+
+% See the thesis.cls file for the steps to convert AASTeX papers
+% into thesis chapters
+
+%%%%% ADD APPENDICES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\addtocontents{toc}{\protect\vspace{0.5cm}}
+                        % Add some vertical space to the table of contents
+                        %   file before listing the appendices (the \protect
+                        %   command is necessary because \vspace is fragile).
+
+%\appendix		% Resets chapter numbering to A, B, C... for appendices
+
+%\include{apA}		% *.tex file for Appendix A (just like a chapter)
+
+%\include{vitae}         % *.tex file for the Vitae
+
+%\include{colophon}      % *.tex file for the Colophon
+
+% END THE DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\clearpage
+%Need to uncomment all of the following to get an index
+%\addcontentsline{toc}{section}{Index}
+%{\fixspacing \small
+%\printindex
+%}
+
+\end{document}
