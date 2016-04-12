@@ -128,6 +128,12 @@
 %       - Completely re-did margins to be just over 1 inch, with
 %         page numbers ~0.6 inches from the top of the page.
 %
+%   April 2016, Chris Bard:
+%       In conversion instructions:
+%       - added infomation about bibliography complilation
+%       - added infomation about short titles in Table of Contents,
+%          list of tables, list of figures
+%       - go Phillies!
 %*********************************************************************
 
 %\ProvidesClass{thesis}[1996/07/09 v1.0 UW Astronomy thesis document class]
@@ -840,17 +846,25 @@
 %           (the two versions in \chapter are for what shows up in the
 %           table of contents vs. what shows up at the start of the
 %           chapter)
+%
 %  * Optional: Label the chapter   e.g. \label{ch2}
+%
 %  * Optional: Define a \FigDir (only if you are using the \figcaption
 %        macro that CJD created
+%
 %  * Remove header stuff:
 %        \documentclass (or \documentstyle for old papers)
 %        \begin{document}
 %        \slugcomment
 %        \author, \affil, \email, \shortauthors, \shorttitle, etc
 %        \keywords
+%
 %  * Optional: Move the \newcommand{}s to define.tex
+%
+%  * Optional: Move \usepackage{}s to Thesis.tex and delete in chapter
+%
 %  * Change \begin{abstract} -> \begin{chabstract}  (ditto for \end{})
+%
 %  * Optional: change all citations and references to have, for
 %        example, ``ch1'' in them.  That is, \citet{dol00} ->
 %        \citet{ch1:dol00}.  This is to prevent instances of
@@ -859,20 +873,43 @@
 %        \label{sec:discussion} in both Chapters 1 & 2 and then you
 %        have a \ref{sec:discussion} in Chapter 3?  Better to have
 %        \ref{ch2:discussion}, I say)
+%
 %  * Move figures to their appropriate places in the text (usually
 %        where you put the \placefigure{}s eariler)
+%
 %  * Put \fixspacing in every figure caption, and add short captions for the figures to go in the list of figures
+%
+%  * Define short titles for each figure/table
+%    (they will show up in List of Tables/Figures)
+%   ex: \caption[short title goes here]{\fixspacing Longer caption...}
+%
 %  * Input subdirectories in path for each chapter (AAK, 8/2/08)
+%
 %  * Put \fixspacing in every footnote
+%
 %  * Change \appendix to \chapappendix and add \endchapappendix
+%
 %  * Fix tables:
 %        - Put \fixspacing in every \tablenotetext
 %        - Remove the \rotate commands and put \begin{landscape} and
 %          \end{landscape around the \begin,\end{deluxetable} commands
 %          where needed
 %        - Take out \tabletypesize{\scriptsize} (AAK, 8/2/08)
+%
 %  * Remove footer stuff:
 %        \end{document}
 %           (Note if you forget to do this you will get a very
 %           mysterious error message like:
 %           \end occurred when \iftrue on line 85 was incomplete)
+%
+%  * If references/citations do not work for you when compiling Thesis.tex
+%     with whatever LaTeX editor you use, you may have to manually create
+%     each chapter's .bbl file with BibTex.
+%    Process:
+%      1. latex/pdftex/etc. Thesis.tex 
+%          -> will produce .aux files for each chapter
+%      2. in Chap# directory, ln -s ../thesis.bst
+%         -> creates symbolic link to bibliography style file
+%      3. in Chap# directory, bibtex chap#.aux
+%         -> creates chap#.bbl file
+%      4. latex/pdftex/etc. Thesis.tex (repeat as needed)
