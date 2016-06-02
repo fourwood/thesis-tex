@@ -134,6 +134,11 @@
 %       - added infomation about short titles in Table of Contents,
 %          list of tables, list of figures
 %       - go Phillies!
+%
+%   June 2016, Chris Bard
+%       At the end of this document
+%       - Added details about epigraphs
+%       - Added details about making list of symbols
 %*********************************************************************
 
 %\ProvidesClass{thesis}[1996/07/09 v1.0 UW Astronomy thesis document class]
@@ -913,3 +918,37 @@
 %      3. in Chap# directory, bibtex chap#.aux
 %         -> creates chap#.bbl file
 %      4. latex/pdftex/etc. Thesis.tex (repeat as needed)
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Other miscellanea
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    If you have so many equations and symbols floating around that
+%     you actually run out of Greek letters to use, a table of symbols
+%     would be greatly appreciated by your committee.
+%
+%    To do this, use the nomenclature package (nomencl) and in Thesis.tex,
+%      - uncomment the \makenomenclature 
+%      - uncomment \renewcommand{\nomlabel}[1]{\hfil #1\hfil}
+%      - uncomment \renewcommand{\nomname}{List of Abbreviations and Symbols}
+%      - uncomment \addcontentsline{toc}{section}{List of Selected Abbreviations and Symbols}
+%      - uncomment {\fixspacing \small
+%                  \printnomenclature[1in]
+%                  }
+%
+%       or else just put these lines in! 
+%       usepackage and makenomenclature go before begin{document}
+%       the rest go after \listoffigures and before \mainmatter
+%
+%       In order to properly compile, you need to:
+%        - pdflatex (or whatever)
+%        - makeindex Thesis.nlo -s nomencl.ist -o Thesis.nls
+%        - pdflatex
+%
+%%%%%%%%
+%
+%      If you want to have epigraphs, use the epigraph package!
+%       \epigraph{bon mot, \textit{format it too!}}{clever person}
+%
+%      These go after \chapter and before \cleardoublepage
