@@ -358,12 +358,12 @@
 \newcommand{\ttlpage}{
      \thispagestyle{empty}
      \begin{center}
-         \textsc{\large \title}
+         \title
          \vspace{\baselineskip}
 
-         \textit{by}
+         By
 
-         \textsc{\author}
+         \author
          \vspace{\baselineskip}
 
          A dissertation submitted in partial fulfillment of
@@ -371,14 +371,14 @@
          the requirements for the degree of
          \vspace{\baselineskip}
 
-         \textsc{Doctor of Philosophy}
+         Doctor of Philosophy
 
-         \textsc{(Astronomy)}
+         (Astronomy)
          \vspace{\baselineskip}
 
-         \textit{at the}
+         at the
 
-         \textsc{University of Wisconsin--Madison}
+         UNIVERSITY OF WISCONSIN--MADISON
 
          {\year}
      \end{center}
@@ -397,7 +397,7 @@
          \@committeetwo\\
          \@committeethree\\
          \@committeefour\\
-         \@committeefive
+        % \@committeefive
      \end{minipage}
 %     \indent \@committeesix 
 
